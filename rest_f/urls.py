@@ -13,4 +13,5 @@ urlpatterns = [
     path('',include(router.urls)),
     path('api-auth/',include('rest_framework.urls',namespace='rest_framework')),
     path('address/',views.AddressView.AddressList.as_view()),
+    path('address/<int:pk>/',views.AddressView.AddressDetail.as_view()),    
 ]

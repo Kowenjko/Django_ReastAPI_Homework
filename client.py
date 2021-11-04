@@ -6,17 +6,34 @@ from pprint import pprint
 def get():
     response = requests.get('http://127.0.0.1:8000/address/')
     pprint(response.json())
+
 def post():
-    data={
-            'apartamenst': 236,
-            'city': 'Рівне',     
+    data = {'apartaments': 0,
+            'city': 'Рівне',
             'country': 'Україна',
-            'house_num': 25,            
-            'street': 'Боровое (Заречненский р-н), Рівненська обл. Пункт приема - выдачи ',           
-            'zip_code': 2525252    }
+            'house_num': 46,
+            'street': 'Київська',
+            'zip_code': 33027}
     response = requests.post('http://127.0.0.1:8000/address/',data=data)
-    print(response.json(),response.status_codes)
+    print(response.json(),response.status_code)
+
+def update():
+    data = {'apartaments': 0,
+            'city': 'Рівне',
+            'country': 'Україна',
+            'house_num': 46,
+            'street': 'Київська',
+            'zip_code': 33027}
+    response = requests.put('http://127.0.0.1:8000/address/5/',
+                            data=data)
+    print(response.json(), response.status_code)
+
+def delete():
+    response = requests.delete('http://127.0.0.1:8000/address/5/')
+    print("DELETE:", response.status_code)
 
 if __name__=="__main__":
-    # get()
-    post()
+    get()
+    # post()
+    # update()
+    # delete()
